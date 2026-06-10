@@ -1,0 +1,12 @@
+aws_region   = "us-east-1"
+project_name = "cipolflo"
+environment  = "production"
+
+db_name     = "CIPOLFLO_BD"
+db_username = ""
+db_password = ""
+
+auth0_issuer_uri = ""
+auth0_audience   = ""
+auth0_domain     = ""
+auth0_client_id  = ""

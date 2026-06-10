@@ -2,9 +2,11 @@
 
 # Terraform
 .terraform/
+*.tfvars
 *.tfstate
 *.tfstate.backup
 *.tfstate.lock.info
+.terraform.lock.hcl
 crash.log
 crash.*.log
 override.tf
