@@ -27,6 +27,7 @@ services:
       SPRING_PROFILES_ACTIVE: docker
       AUTH0_ISSUER_URI: ${AUTH0_ISSUER_URI}
       AUTH0_AUDIENCE: ${AUTH0_AUDIENCE}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS}
     depends_on:
       db:
         condition: service_healthy
