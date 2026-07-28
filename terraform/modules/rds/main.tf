@@ -23,8 +23,9 @@ resource "aws_db_instance" "main" {
   db_subnet_group_name   = aws_db_subnet_group.main.name
   vpc_security_group_ids = [var.rds_security_group_id]
 
-  skip_final_snapshot     = true
-  deletion_protection     = false
+  skip_final_snapshot       = var.skip_final_snapshot
+  final_snapshot_identifier = var.skip_final_snapshot ? null : "${var.project_name}-${var.environment}-final-${formatdate("YYYYMMDDhhmmss", timestamp())}"
+  deletion_protection       = var.deletion_protection
 
   tags = {
     Environment = var.environment

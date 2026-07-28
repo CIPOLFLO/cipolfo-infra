@@ -37,6 +37,8 @@ module "rds" {
   db_name               = var.db_name
   db_username           = var.db_username
   db_password           = var.db_password
+  deletion_protection   = false
+  skip_final_snapshot   = true
 }
 
 module "alb" {
@@ -71,6 +73,15 @@ module "ecs" {
   auth0_client_id           = var.auth0_client_id
   backend_url               = "https://${var.subdomain}.${var.domain_name}"
   cors_allowed_origins = "https://${var.subdomain}.${var.domain_name}"
+
+  azure_document_intelligence_endpoint = var.azure_document_intelligence_endpoint
+  azure_document_intelligence_key      = var.azure_document_intelligence_key
+  mail_username                        = var.mail_username
+  mail_password                        = var.mail_password
+  reporte_reservas_destinatario        = var.reporte_reservas_destinatario
+  telegram_bot_token                   = var.telegram_bot_token
+  telegram_webhook_secret              = var.telegram_webhook_secret
+  ai_api_key                           = var.ai_api_key
 }
 
 resource "aws_route53_record" "staging" {
