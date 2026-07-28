@@ -10,3 +10,15 @@ auth0_issuer_uri = ""
 auth0_audience   = ""
 auth0_domain     = ""
 auth0_client_id  = ""
+
+azure_document_intelligence_endpoint = ""
+azure_document_intelligence_key      = ""
+
+mail_username = ""
+mail_password = ""
+reporte_reservas_destinatario = ""
+
+telegram_bot_token      = ""
+telegram_webhook_secret = ""
+
+ai_api_key = ""

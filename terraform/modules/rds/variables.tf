@@ -36,3 +36,13 @@ variable "db_password" {
   type      = string
   sensitive = true
 }
+
+variable "deletion_protection" {
+  type    = bool
+  default = true
+}
+
+variable "skip_final_snapshot" {
+  type    = bool
+  default = false
+}

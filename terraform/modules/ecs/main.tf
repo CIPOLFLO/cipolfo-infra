@@ -49,7 +49,15 @@ resource "aws_ecs_task_definition" "backend" {
       { name = "SPRING_PROFILES_ACTIVE",     value = "docker" },
       { name = "AUTH0_ISSUER_URI",           value = var.auth0_issuer_uri },
       { name = "AUTH0_AUDIENCE",             value = var.auth0_audience },
-      { name = "CORS_ALLOWED_ORIGINS",       value = var.cors_allowed_origins }
+      { name = "CORS_ALLOWED_ORIGINS",       value = var.cors_allowed_origins },
+      { name = "AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT", value = var.azure_document_intelligence_endpoint },
+      { name = "AZURE_DOCUMENT_INTELLIGENCE_KEY",      value = var.azure_document_intelligence_key },
+      { name = "MAIL_USERNAME",                        value = var.mail_username },
+      { name = "MAIL_PASSWORD",                        value = var.mail_password },
+      { name = "REPORTE_RESERVAS_DESTINATARIO",        value = var.reporte_reservas_destinatario },
+      { name = "TELEGRAM_BOT_TOKEN",                   value = var.telegram_bot_token },
+      { name = "TELEGRAM_WEBHOOK_SECRET",              value = var.telegram_webhook_secret },
+      { name = "AI_API_KEY",                           value = var.ai_api_key }
     ]
 
     logConfiguration = {
