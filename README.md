@@ -143,17 +143,21 @@ Desde **WSL Ubuntu**:
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
 ```
 
+Cada ambiente tiene sus propios repositorios. Reemplazá `AMBIENTE` por `staging` o `production` según corresponda.
+
 Luego taguear y subir el backend:
 ```bash
-docker tag cipolflo-server-backend:latest TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-backend:latest
-docker push TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-backend:latest
+docker tag cipolflo-server-backend:latest TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-AMBIENTE-backend:latest
+docker push TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-AMBIENTE-backend:latest
 ```
 
 Y el frontend:
 ```bash
-docker tag cipolflo-frontend:latest TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-frontend:latest
-docker push TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-frontend:latest
+docker tag cipolflo-frontend:latest TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-AMBIENTE-frontend:latest
+docker push TU_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cipolflo-AMBIENTE-frontend:latest
 ```
+
+Los nombres exactos los podés sacar de los outputs de Terraform (`ecr_backend_url` y `ecr_frontend_url`).
 
 ---
 

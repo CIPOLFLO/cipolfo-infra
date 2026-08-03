@@ -11,6 +11,13 @@ auth0_audience   = ""
 auth0_domain     = ""
 auth0_client_id  = ""
 
+# ARN del certificado ACM (us-east-1) que cubre el dominio de produccion
+certificate_arn = ""
+# ID de la hosted zone de Route53
+hosted_zone_id  = ""
+domain_name     = "cipolflo.com.uy"
+subdomain       = "www"
+
 azure_document_intelligence_endpoint = ""
 azure_document_intelligence_key      = ""
 
