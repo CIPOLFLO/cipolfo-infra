@@ -1,0 +1,235 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Despliegue" id="despliegue-cipolflo">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1020" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="grpCliente" value="Cliente" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="20" y="300" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" value="Navegador&lt;br&gt;&lt;b&gt;Angular SPA&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="45" y="340" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="grpAws" value="AWS Cloud — us-east-1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="270" y="40" width="990" height="940" as="geometry" />
+        </mxCell>
+
+        <mxCell id="route53" value="DNS: staging.cipolflo.com.uy&lt;br&gt;&lt;b&gt;AWS Route53&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="90" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ecr" value="Registro de imagenes&lt;br&gt;cipolflo-backend / -frontend&lt;br&gt;&lt;b&gt;AWS ECR&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="90" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cw" value="Logs de los contenedores&lt;br&gt;retencion 7 dias&lt;br&gt;&lt;b&gt;AWS CloudWatch&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="860" width="210" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="grpVpc" value="VPC 10.0.0.0/16" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=8;fontSize=13;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="195" width="700" height="730" as="geometry" />
+        </mxCell>
+        <mxCell id="igw" value="&lt;b&gt;Internet Gateway&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="355" y="228" width="200" height="52" as="geometry" />
+        </mxCell>
+
+        <mxCell id="grpPub" value="Subredes publicas — 2 AZ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=8;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="305" width="660" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="alb" value="Balanceador / enrutamiento&lt;br&gt;HTTPS 443 + certificado ACM&lt;br&gt;80 redirige a 443&lt;br&gt;&lt;b&gt;AWS ALB&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="355" y="350" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="fe" value="Frontend — sirve la SPA&lt;br&gt;contenedor nginx :80&lt;br&gt;&lt;b&gt;AWS ECS Fargate&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="625" y="350" width="200" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="nat" value="Salida a internet&lt;br&gt;&lt;b&gt;NAT Gateway&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="350" width="110" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="grpPriv" value="Subredes privadas — 2 AZ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=8;fontSize=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="570" width="660" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="be" value="Servidor de app&lt;br&gt;Spring Boot - API REST :8080&lt;br&gt;&lt;b&gt;AWS ECS Fargate&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="610" width="320" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rds" value="PostgreSQL 15 :5432&lt;br&gt;&lt;b&gt;AWS RDS&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="400" y="760" width="240" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="auth0" value="Auth0&lt;br&gt;Autenticacion&lt;br&gt;&lt;b&gt;SaaS externo&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="250" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="azure" value="Azure Document Intelligence&lt;br&gt;Escaneo de facturas&lt;br&gt;&lt;b&gt;Azure Cloud&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="400" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="telegram" value="Telegram&lt;br&gt;Bot - usuario&lt;br&gt;&lt;b&gt;Externo&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="550" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="groq" value="Groq API&lt;br&gt;&lt;b&gt;LLM externo&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="700" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="smtp" value="Servidor SMTP&lt;br&gt;envio de mails&lt;br&gt;&lt;b&gt;Externo&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="830" width="220" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" value="1. resuelve el nombre" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="browser" target="route53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="registro alias A" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="route53" target="alb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="2. HTTPS 443" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="browser" target="igw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="254" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="igw" target="alb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="resto de rutas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="alb" target="fe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="/api/* — Bearer JWT" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="alb" target="be">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="JDBC / SQL 5432" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="be" target="rds">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="salida a internet" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="be" target="nat">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="nat" target="igw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="254" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e10" value="OAuth — login, devuelve el JWT" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="browser" target="auth0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="125" y="20" />
+              <mxPoint x="1450" y="20" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="JWKS para validar el JWT" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="be" target="auth0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="660" />
+              <mxPoint x="1180" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="HTTPS / SDK Java" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="be" target="azure">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="640" />
+              <mxPoint x="1210" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="be" target="telegram">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1245" y="625" />
+              <mxPoint x="1245" y="595" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" value="webhook HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="telegram" target="igw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="185" />
+              <mxPoint x="455" y="185" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" value="HTTPS / SDK" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="be" target="groq">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="695" />
+              <mxPoint x="1280" y="740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16" value="SMTP" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="be" target="smtp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1310" y="705" />
+              <mxPoint x="1310" y="875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e17" value="docker pull" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="ecr" target="fe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="docker pull" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="ecr" target="be">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="130" />
+              <mxPoint x="1020" y="548" />
+              <mxPoint x="520" y="548" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e19" value="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="be" target="cw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" value="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;" edge="1" parent="1" source="fe" target="cw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram name="Capas de seguridad" id="seguridad-cipolflo">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="titulo" value="Security Groups: cada capa solo acepta conexiones de la anterior" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="700" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="net" value="Internet&lt;br&gt;0.0.0.0/0" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sgalb" value="&lt;b&gt;SG del ALB&lt;/b&gt;&lt;br&gt;balanceador" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="150" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sgecs" value="&lt;b&gt;SG de los contenedores&lt;/b&gt;&lt;br&gt;frontend y backend" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="150" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sgrds" value="&lt;b&gt;SG de la base&lt;/b&gt;&lt;br&gt;RDS PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="150" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s1" value="TCP 80 y 443&lt;br&gt;unico ingreso desde internet" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="net" target="sgalb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="cualquier puerto, pero&lt;br&gt;solo desde el SG del ALB" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="sgalb" target="sgecs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="TCP 5432, solo desde&lt;br&gt;el SG de los contenedores" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="sgecs" target="sgrds">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="nota" value="Leido al reves: a la base solo le puede hablar un contenedor, y a un contenedor solo le puede hablar el ALB.&lt;br&gt;El SG de la base no tiene reglas de salida; los otros dos si, y es lo que les permite bajar la imagen de ECR y llamar a los servicios externos." style="text;html=1;align=left;verticalAlign=top;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="1320" height="60" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

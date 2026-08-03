@@ -42,6 +42,25 @@ variable "auth0_client_id" {
   type = string
 }
 
+variable "certificate_arn" {
+  type = string
+}
+
+variable "hosted_zone_id" {
+  type = string
+}
+
+variable "domain_name" {
+  type    = string
+  default = "cipolflo.com.uy"
+}
+
+# Vacio = dominio raiz (cipolflo.com.uy). Si se usa subdominio, poner "www" o el que corresponda.
+variable "subdomain" {
+  type    = string
+  default = ""
+}
+
 variable "azure_document_intelligence_endpoint" {
   type = string
 }

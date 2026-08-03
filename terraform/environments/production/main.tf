@@ -16,6 +16,11 @@ provider "aws" {
   region = var.aws_region
 }
 
+locals {
+  app_domain = var.subdomain == "" ? var.domain_name : "${var.subdomain}.${var.domain_name}"
+  app_url    = "https://${local.app_domain}"
+}
+
 module "ecr" {
   source       = "../../modules/ecr"
   project_name = var.project_name
@@ -37,8 +42,10 @@ module "rds" {
   db_name               = var.db_name
   db_username           = var.db_username
   db_password           = var.db_password
-  deletion_protection   = true
-  skip_final_snapshot   = false
+  # Cuenta de estudiante: se destruye seguido para no gastar creditos.
+  # Al pasar a una cuenta real, poner deletion_protection = true y skip_final_snapshot = false.
+  deletion_protection = false
+  skip_final_snapshot = true
 }
 
 module "alb" {
@@ -48,6 +55,7 @@ module "alb" {
   vpc_id                = module.networking.vpc_id
   public_subnet_ids     = module.networking.public_subnet_ids
   alb_security_group_id = module.networking.alb_security_group_id
+  certificate_arn       = var.certificate_arn
 }
 
 module "ecs" {
@@ -70,7 +78,8 @@ module "ecs" {
   auth0_audience            = var.auth0_audience
   auth0_domain              = var.auth0_domain
   auth0_client_id           = var.auth0_client_id
-  backend_url               = "http://${module.alb.alb_dns_name}"
+  backend_url               = local.app_url
+  cors_allowed_origins      = local.app_url
 
   azure_document_intelligence_endpoint = var.azure_document_intelligence_endpoint
   azure_document_intelligence_key      = var.azure_document_intelligence_key
@@ -80,4 +89,16 @@ module "ecs" {
   telegram_bot_token                   = var.telegram_bot_token
   telegram_webhook_secret              = var.telegram_webhook_secret
   ai_api_key                           = var.ai_api_key
+}
+
+resource "aws_route53_record" "production" {
+  zone_id = var.hosted_zone_id
+  name    = local.app_domain
+  type    = "A"
+
+  alias {
+    name                   = module.alb.alb_dns_name
+    zone_id                = module.alb.alb_zone_id
+    evaluate_target_health = true
+  }
 }
